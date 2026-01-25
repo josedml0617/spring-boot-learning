@@ -23,7 +23,7 @@ public class TestConfig implements CommandLineRunner{
 		List<User> users = new ArrayList<>();
 		users.add(new User(null, "Victória", "victoria@gmail.com", "61 9 9999-9991", "1234"));
 		users.add(new User(null, "Lavínia", "lavinia@gmail.com", "61 9 9999-9992", "2345"));
-		users.add(new User(null, "Henrique", "henriquea@gmail.com", "61 9 9999-9993", "3456"));
+		users.add(new User(null, "Henrique", "henrique@gmail.com", "61 9 9999-9993", "3456"));
 		
 		userRepository.saveAll(users);
 	}
