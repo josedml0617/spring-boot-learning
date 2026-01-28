@@ -11,17 +11,16 @@ import com.meloDeveloper.spring_boot_learning.repositories.UserRepository;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
 	private UserRepository repository;
-	
-	public List<User> findAll(){
+
+	public List<User> findAll() {
 		return repository.findAll();
-		}
-		
-	public User findById(Long id){
+	}
+
+	public User findById(Long id) {
 		Optional<User> user = repository.findById(id);
 		return user.get();
 	}
-	
-	}
+}
