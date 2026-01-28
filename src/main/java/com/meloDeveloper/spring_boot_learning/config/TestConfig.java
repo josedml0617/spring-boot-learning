@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.meloDeveloper.spring_boot_learning.entities.Order;
 import com.meloDeveloper.spring_boot_learning.entities.User;
+import com.meloDeveloper.spring_boot_learning.enums.OrderStatus;
 import com.meloDeveloper.spring_boot_learning.repositories.OrderRepository;
 import com.meloDeveloper.spring_boot_learning.repositories.UserRepository;
 
@@ -31,9 +32,9 @@ public class TestConfig implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(u1,u2,u3));
 		
-		Order o1 = new Order(null, Instant.parse("2026-01-28T12:20:26Z"), u1);
-		Order o2 = new Order(null, Instant.parse("2026-01-28T11:25:16Z"), u2);
-		Order o3 = new Order(null, Instant.parse("2026-01-28T12:21:34Z"), u1);
+		Order o1 = new Order(null, Instant.parse("2026-01-28T12:20:26Z"),OrderStatus.PAID, u1);
+		Order o2 = new Order(null, Instant.parse("2026-01-28T11:25:16Z"),OrderStatus.WAITING_PAYMENT, u2);
+		Order o3 = new Order(null, Instant.parse("2026-01-28T12:21:34Z"),OrderStatus.WAITING_PAYMENT, u1);
 		
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
 	}
