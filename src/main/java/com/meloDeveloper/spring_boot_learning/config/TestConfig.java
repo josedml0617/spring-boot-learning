@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.meloDeveloper.spring_boot_learning.entities.Category;
 import com.meloDeveloper.spring_boot_learning.entities.Order;
+import com.meloDeveloper.spring_boot_learning.entities.Product;
 import com.meloDeveloper.spring_boot_learning.entities.User;
 import com.meloDeveloper.spring_boot_learning.enums.OrderStatus;
 import com.meloDeveloper.spring_boot_learning.repositories.CategoryRepository;
 import com.meloDeveloper.spring_boot_learning.repositories.OrderRepository;
+import com.meloDeveloper.spring_boot_learning.repositories.ProductRepository;
 import com.meloDeveloper.spring_boot_learning.repositories.UserRepository;
 
 @Configuration
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -49,5 +54,22 @@ public class TestConfig implements CommandLineRunner{
 		Order o3 = new Order(null, Instant.parse("2026-01-28T12:21:34Z"),OrderStatus.WAITING_PAYMENT, u1);
 		
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
+		
+		Product p1 = new Product(null, "Clean Code", "Classic book on writing maintainable and efficient code.", 45.0, "");
+		Product p2 = new Product(null, "Samsung Smart TV 55\"", "4K UHD display with HDR and streaming apps built-in.", 799.0, "");
+		Product p3 = new Product(null, "MacBook Air M3", "Lightweight laptop powered by Apple Silicon M3 chip.", 1499.0, "");
+		Product p4 = new Product(null, "Gaming PC RTX 4070", "High-performance desktop with NVIDIA RTX 4070 graphics card.", 1899.0, "");
+		Product p5 = new Product(null, "Spring Boot in Action", "Comprehensive guide to building modern web applications with Spring Boot.", 59.99, "");
+		
+		p1.getCategories().add(cat2);
+		p2.getCategories().add(cat1);
+		p2.getCategories().add(cat3);
+		p3.getCategories().add(cat1);
+		p3.getCategories().add(cat3);
+		p4.getCategories().add(cat1);
+		p4.getCategories().add(cat3);
+		p5.getCategories().add(cat2);
+		
+		productRepository.saveAll(Arrays.asList(p1,p2,p3,p4,p5));
 	}
 }
