@@ -3,6 +3,7 @@ package com.meloDeveloper.spring_boot_learning.pk;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.meloDeveloper.spring_boot_learning.entities.Order;
 import com.meloDeveloper.spring_boot_learning.entities.Product;
 
