@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import com.meloDeveloper.spring_boot_learning.entities.Category;
 import com.meloDeveloper.spring_boot_learning.entities.Order;
 import com.meloDeveloper.spring_boot_learning.entities.OrderItem;
+import com.meloDeveloper.spring_boot_learning.entities.Payment;
 import com.meloDeveloper.spring_boot_learning.entities.Product;
 import com.meloDeveloper.spring_boot_learning.entities.User;
 import com.meloDeveloper.spring_boot_learning.enums.OrderStatus;
@@ -83,5 +84,9 @@ public class TestConfig implements CommandLineRunner{
 		OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
 		
 		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
+		
+		Payment pay1 = new Payment(null, Instant.parse("2026-01-28T12:22:49Z"), o1);
+		o1.setPayment(pay1);
+		orderRepository.save(o1);
 	}
 }
